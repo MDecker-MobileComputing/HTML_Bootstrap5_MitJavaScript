@@ -18,11 +18,11 @@ let buttonZuruecksetzen = null;
 window.addEventListener("load", function () {
 
     // get reference to <input> with id=inputVorname
-    inputVorname  = document.getElementById("inputVorname");
-    inputNachname = document.getElementById("inputNachname");
+    inputVorname  = document.getElementById( "inputVorname"  );
+    inputNachname = document.getElementById( "inputNachname" );
 
-    buttonBegruessen    = document.getElementById("buttonBegruessen");
-    buttonZuruecksetzen = document.getElementById("buttonZuruecksetzen");
+    buttonBegruessen    = document.getElementById( "buttonBegruessen"    );
+    buttonZuruecksetzen = document.getElementById( "buttonZuruecksetzen" );
 
     buttonBegruessen.addEventListener(    "click", onButtonBegruessen    );
     buttonZuruecksetzen.addEventListener( "click", onButtonZuruecksetzen );
