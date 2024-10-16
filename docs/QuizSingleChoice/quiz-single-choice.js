@@ -1,8 +1,12 @@
 "use strict";
 
+let selectStadt = null;
+
 let buttonAntwortPruefen = null;
 
-let selectStadt = null;
+let modalErgebnis          = null;
+let modalErgebnisTitel     = null;
+let modalErgebnisNachricht = null;
 
 
 /**
@@ -29,6 +33,26 @@ window.addEventListener("load", function () {
         console.error( "Konnte das Select-Element für die Stadt nicht finden!" );
     }
 
+
+    // Bootstrap bietet eine eigene Klasse, mit der ein Modal anhand der ID erholt werden kann
+    modalErgebnis = new bootstrap.Modal('#modalErgebnis', {} );
+    if ( !modalErgebnis ) {
+
+        console.error( "Konnte das Modal-Element für das Ergebnis nicht finden!" );
+    }
+
+    modalErgebnisTitel = document.getElementById( "modalErgebnisTitel" );
+    if ( !modalErgebnisTitel ) {
+
+        console.error( "Konnte das Titel-Element für das Ergebnis-Modal nicht finden!" );
+    }
+
+    modalErgebnisNachricht = document.getElementById( "modalErgebnisNachricht" );
+    if ( !modalErgebnisNachricht ) {
+
+        console.error( "Konnte das Nachrichten-Element für das Ergebnis-Modal nicht finden!" );
+    }
+
     console.log( "Initialisierung abgeschlossen." );
 });
 
@@ -43,15 +67,22 @@ function onButtonAntwortPruefen() {
     switch ( valueStadt ) {
 
         case "keine":
-            alert( "Bitte eine Stadt auswählen." );
+
+            modalErgebnisTitel.innerText     = "Fehler";
+            modalErgebnisNachricht.innerText = "Bitte wählen Sie eine Stadt aus.";
             break;
 
         case "hamburg":
-            alert( "Richtig! Hamburg liegt nördlicher als Amsterdam und London." );
+
+            modalErgebnisTitel.innerText     = "Richtig";
+            modalErgebnisNachricht.innerText = "Hamburg liegt tatsächlich nördlicher als Amsterdam und London.";
             break;
 
         default:
-            alert( "Leider falsch. Bitte versuche es noch einmal." );
+            modalErgebnisTitel.innerText     = "Falsch";
+            modalErgebnisNachricht.innerText = "Denken Sie nochmal nach!";
             selectStadt.value = "keine";
     }
+
+    modalErgebnis.show();
 }
