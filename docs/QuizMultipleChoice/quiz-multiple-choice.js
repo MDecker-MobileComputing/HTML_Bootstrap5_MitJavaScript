@@ -74,9 +74,9 @@ function onButtonAntwortPruefen() {
         modalErgebnisTitel.innerText     = "Fehler";
         modalErgebnisNachricht.innerText = "Bitte wählen Sie mindestens eine Antwort aus.";
 
-    } else if ( antwortArray.length === 2               &&
-                antwortArray.includes("checkboxMerkur") &&
-                antwortArray.includes("checkboxVenus" ) ) {
+    } else if ( antwortArray.length === 2                 &&
+                antwortArray.includes( "checkboxMerkur" ) &&
+                antwortArray.includes( "checkboxVenus"  ) ) {
 
         modalErgebnisTitel.innerText     = "Richtige Antwort";
         modalErgebnisNachricht.innerText = "Herzlichen Glückwunsch!";
@@ -85,6 +85,12 @@ function onButtonAntwortPruefen() {
 
         modalErgebnisTitel.innerText     = "Falsche Antwort";
         modalErgebnisNachricht.innerText = "Denken Sie nochmal nach!";
+
+        // alle Checkboxen abwählen
+        alleCheckboxen.forEach(function (checkbox) {
+
+            checkbox.checked = false;
+        });
     }
 
     modalErgebnis.show();
