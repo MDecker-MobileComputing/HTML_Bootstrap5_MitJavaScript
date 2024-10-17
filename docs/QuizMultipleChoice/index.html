@@ -18,10 +18,6 @@
             <div><!-- Formular -->
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="checkboxErde" value="">
-                    <label class="form-check-label" for="checkboxErde">Erde</label>
-                </div>
-                <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="checkboxJupiter" value="">
                     <label class="form-check-label" for="checkboxJupiter">Jupiter</label>
                 </div>
@@ -51,7 +47,11 @@
                 </div>
 
                 <div class="mt-4">
-                    <button id="buttonAntwortPruefen" class="btn btn-primary">Antwort überprüfen</button>
+                    <button id="buttonAntwortPruefen"
+                            class="btn btn-primary"
+                            data-bs-toggle="tooltip"
+                            data-bs-title="Wählen Sie mindestens einen Planeten aus"
+                            >Antwort überprüfen</button>
                 </div>
 
             </div><!-- Formular -->
@@ -76,7 +76,7 @@
 
        </div><!-- container -->
 
-        <script src="./quiz-single-choice.js"></script>
+       <script src="./quiz-multiple-choice.js"></script>
 
     </body>
 </html>
