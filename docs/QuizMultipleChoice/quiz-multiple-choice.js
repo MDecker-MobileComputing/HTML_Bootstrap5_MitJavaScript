@@ -57,8 +57,35 @@ window.addEventListener("load", function () {
  */
 function onButtonAntwortPruefen() {
 
-    modalErgebnisTitel.innerText     = "Info";
-    modalErgebnisNachricht.innerText = "Not implemented yet";
+    const antwortArray = [];
+
+    const alleCheckboxen = document.querySelectorAll( ".form-check-input" );
+    alleCheckboxen.forEach(function (checkbox) {
+
+        if (checkbox.checked) {
+
+            antwortArray.push( checkbox.id );
+        }
+    });
+    console.log( "Ausgewählte Checkboxen:", antwortArray );
+
+    if ( antwortArray.length === 0 ) {
+
+        modalErgebnisTitel.innerText     = "Fehler";
+        modalErgebnisNachricht.innerText = "Bitte wählen Sie mindestens eine Antwort aus.";
+
+    } else if ( antwortArray.length === 2               &&
+                antwortArray.includes("checkboxMerkur") &&
+                antwortArray.includes("checkboxVenus" ) ) {
+
+        modalErgebnisTitel.innerText     = "Richtige Antwort";
+        modalErgebnisNachricht.innerText = "Herzlichen Glückwunsch!";
+
+    } else {
+
+        modalErgebnisTitel.innerText     = "Falsche Antwort";
+        modalErgebnisNachricht.innerText = "Denken Sie nochmal nach!";
+    }
 
     modalErgebnis.show();
 }
