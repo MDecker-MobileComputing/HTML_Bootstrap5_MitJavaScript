@@ -1,6 +1,10 @@
 "use strict";
 
-
+/**
+ * Ein Objekt dieser Klasse repräsentiert ein Zahlenpaar, bestehend aus einer Lottozahl
+ * und einer Zufallszahl. Die Zufallszahl wird bei der Erzeugung des Objekts generiert.
+ * Die Zahlenpaare werden nach der Zufallszahl sortiert werden.
+ */
 class ZahlenPaar {
 
     /**
@@ -23,6 +27,10 @@ class ZahlenPaar {
 /** <input>-Element für Eingabe Anzahl der zu erzeugenden Lottozahlen.  */
 let inputAnzahl = null;
 
+/** Button, um die bereits erzeugten Lottozahlen zu löschen. */
+let buttonLoeschen = null;
+
+/* <div>-Element, zu dem <input>-Elemente mit den Lottozahlen hinzugefügt werden. */
 let divErgebnis = null;
 
 
@@ -48,6 +56,16 @@ window.addEventListener("load", function () {
         console.error( "Button 'Los' nicht gefunden!" );
     }
 
+    buttonLoeschen = document.getElementById( "buttonLoeschen" );
+    if ( buttonLoeschen ) {
+
+        buttonLoeschen.addEventListener( "click", onLoeschenButton );
+
+    } else {
+
+        console.error( "Button 'Löschen' nicht gefunden!" );
+    }
+
     divErgebnis = document.getElementById( "divErgebnis" );
     if ( !divErgebnis ) {
 
@@ -59,7 +77,22 @@ window.addEventListener("load", function () {
 
 
 /**
+ * Event-Handler für den Klick auf den "Löschen"-Button zur Erzeugung der Lottozahlen.
+ */
+function onLoeschenButton() {
+
+    // remove all child nodes of divErgebnis
+    divErgebnis.innerHTML = "";
+
+    buttonLoeschen.classList.add( "d-none" );
+}
+
+
+/**
  * Event-Handler für den Klick auf den "Los"-Button zur Erzeugung der Lottozahlen.
+ *
+ * Die Lottozahlen werden in Readonly-<input>-Element dargestellt, weil man bei Copy&Paste
+ * dann nicht aus Versehen über den Rand hinaus kopiert.
  */
 function onLosButton() {
 
@@ -67,15 +100,32 @@ function onLosButton() {
 
     for (let i = 1; i <= anzahl; i++) {
 
-        const ergebnisArray = lottoZahlenErzeugen();
-        console.log( `Ergebnis: ${ergebnisArray}` );
+        const ergebnisString = lottoZahlenErzeugen();
+
+        const inputElement = document.createElement( "input" );
+
+        inputElement.value    = " " + ergebnisString;
+        inputElement.readOnly = true;
+        inputElement.disabled = true;
+        inputElement.type     = "text";
+
+        inputElement.classList.add( "form-control" );
+        inputElement.classList.add( "mb-2"         );
+        inputElement.classList.add( "col-md-3"     );
+
+        divErgebnis.appendChild( inputElement );
     }
+
+    buttonLoeschen.classList.remove( "d-none" );
 }
 
 
 /**
- * Funktion gibt einen Array mit einem zufälligen Tipp für das Lotto 6 aus 49 zurück.
+ * Funktion gibt einen String mit einem zufälligen Tipp für das Lotto 6 aus 49 zurück.
  * Die Zahlen sind aufsteigend sortiert.
+ *
+ * @returns {string} String mit 6 Zahlen, getrennt durch Kommas.
+ *                   Beispiel: "3, 7, 12, 19, 23, 49"
  */
 function lottoZahlenErzeugen() {
 
@@ -90,7 +140,7 @@ function lottoZahlenErzeugen() {
     // Elemente in zahlenPaarArray nach Zufallszahl sortieren
     zahlenPaarArray.sort( (a, b) => a.zufallszahl - b.zufallszahl );
 
-    // erste 6 Elemente holen
+    // erste 6 Zahlen holen
     const ergebnisArray = [];
     for ( let i = 0; i < 6; i++ ) {
 
@@ -99,5 +149,6 @@ function lottoZahlenErzeugen() {
 
     ergebnisArray.sort( (a, b) => a - b );
 
-    return ergebnisArray;
+    const ergebnisString = ergebnisArray.join( ", " );
+    return ergebnisString;
 }

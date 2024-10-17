@@ -14,23 +14,25 @@
             <h1 class="text-center my-5">Lottozahlengenerator (Bootstrap 5)</h1><!-- my-5: margin top+bottom -->
 
             <div class="row mb-3">
-
                 <div class="col-3">
                     <label for="inputAnzahl" class="form-label">Anzahl Lotto-Tipps:</label>
                     <input id="inputAnzahl"
                            type="number"
                            class="form-control"
                            placeholder="Zahl eingeben"
-                           value="1"
+                           value="3"
                            min="1" max="100">
                 </div>
-
             </div><!-- row -->
             <button id="buttonLos" class="btn btn-primary">Los!</button>
 
 
-            <div id="divErgebnis" class="mt-5">
+            <!-- Unter diesem <div>-Element werden die <input>-Elemente mit den erzeugten Lottozahlen eingefügt -->
+            <div class="row mt-5 mb-3">
+                <div id="divErgebnis" class="col-3">
+                </div>
             </div>
+            <button id="buttonLoeschen" class="btn btn-danger mb-3 d-none">Löschen</button>
 
         </div><!-- container-sm -->
 
