@@ -26,7 +26,7 @@ window.addEventListener("load", function () {
     }
 
 
-    // Selection-Element mit CSS-Selection statt ID holen
+    // Selection-Element mit CSS-Selector statt ID holen; es wird das erste passende Element zurückgegeben
     selectStadt = document.querySelector( ".container-sm .form-select" );
     if ( !selectStadt ) {
 
