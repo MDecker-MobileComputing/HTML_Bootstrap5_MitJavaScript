@@ -82,7 +82,9 @@ function onRadioButtonAenderung(event) {
             break;
 
         default:
-            console.log( `Interner Fehler: Unerwarteter Wert des Radio-Buttons: "${valueGewaehlterRadioButton}"` );
+            console.error(
+                `Interner Fehler: Unerwarteter Wert des Radio-Buttons: "${valueGewaehlterRadioButton}"`
+            );
     }
 }
 
