@@ -96,6 +96,8 @@ function onLoeschenButton() {
  */
 function onLosButton() {
 
+    onLoeschenButton();
+
     const anzahl = inputAnzahl.value;
 
     for (let i = 1; i <= anzahl; i++) {
