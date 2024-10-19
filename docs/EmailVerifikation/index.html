@@ -18,29 +18,44 @@
                  https://www.ionos.de/hilfe/e-mail/glossar-e-mail-fachbegriffe-verstaendlich-erklaert/e-mail-adresse-kurz-erklaert/ 
              -->
 
-
-            <div class="input-group mb-3">
+             <div class="input-group mb-3">
                 <span class="form-floating">
-                    <input id="inputLokalerTeil" type="text" class="form-control" placeholder="">
+                    <input id="inputLokalerTeil" type="text" class="form-control" placeholder="" required>
                     <label for="inputLokalerTeil">Lokaler Teil, z.B. alice</label>
+                    <span class="valid-feedback">OK</span>
+                    <span class="invalid-feedback">
+                        Der lokale Teil muss aus 1 bis 64 Zeichen bestehen, wobei folgende Zeichen erlaubt sind: Buchstaben, Ziffern und Punkt.
+                    </span>
                 </span>
                 <div class="input-group-text">@</div>
                 <span class="form-floating">                    
-                    <input id="inputDomain" type="text" class="form-control" placeholder="">
+                    <input id="inputDomain" type="text" class="form-control" placeholder="" required>
                     <label for="inputDomain">Domain, z.B. tolle-firma</label>
+                    <span class="valid-feedback">OK</span>
+                    <span class="invalid-feedback">
+                        Die Domain muss aus mindestens zwei Zeichen bestehen, wobei folgende Zeichen erlaubt sind: Buchstaben, Ziffern und Bindestrich.
+                    </span>
                 </span>
                 <div class="input-group-text">.</div>
                 <span class="form-floating">                    
-                    <input id="inputTopLevelDomain" type="text" class="form-control" placeholder="">
-                    <label for="inputTopLevelDomain">Top-Level-Domain, z.B. .com oder .de</label>                    
+                    <input id="inputTopLevelDomain" type="text" class="form-control" placeholder="" required>
+                    <label for="inputTopLevelDomain">Top-Level-Domain, z.B. "com" oder "de"</label>
+                    <span class="valid-feedback">OK</span>
+                    <span class="invalid-feedback">
+                        Die Top-Level-Domain muss aus mindestens zwei Buchstaben bestehen, andere Zeichen sind nicht erlaubt.
+                    </span>
                 </span>                                                
             </div>
 
-            <div col="row">
+            <div class="gap-2">
                 <button id="buttonPruefen"  class="btn btn-primary col-md-2"  >Überprüfen</button>
                 <button id="buttonLoeschen" class="btn btn-secondary col-md-2">Zurücksetzen</button>
             </div>
 
+            <!-- Alert für Erfolgsfall, ist wegen .d-none anfangs nicht sichtbar -->
+            <div id="alertErfolg" class="alert alert-success mt-3 d-none" role="alert">
+                Keine Fehler in der Email-Adresse gefunden.
+            </div>              
 
         </div><!-- container-sm -->
 
