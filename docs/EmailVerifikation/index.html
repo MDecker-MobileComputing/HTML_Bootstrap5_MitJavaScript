@@ -19,16 +19,26 @@
              -->
 
 
-            <div class="input-group">
-                <input id="inputLokalerTeil" type="text" class="form-control" placeholder="">
+            <div class="input-group mb-3">
+                <span class="form-floating">
+                    <input id="inputLokalerTeil" type="text" class="form-control" placeholder="">
+                    <label for="inputLokalerTeil">Lokaler Teil, z.B. alice</label>
+                </span>
                 <div class="input-group-text">@</div>
-                <input id="inputDomain" type="text" class="form-control" placeholder="">
+                <span class="form-floating">                    
+                    <input id="inputDomain" type="text" class="form-control" placeholder="">
+                    <label for="inputDomain">Domain, z.B. tolle-firma</label>
+                </span>
                 <div class="input-group-text">.</div>
-                <input id="inputTopLevelDomain" type="text" class="form-control" placeholder="">
+                <span class="form-floating">                    
+                    <input id="inputTopLevelDomain" type="text" class="form-control" placeholder="">
+                    <label for="inputTopLevelDomain">Top-Level-Domain, z.B. .com oder .de</label>                    
+                </span>                                                
             </div>
 
 
-            <button id="pruefenButton" class="btn btn-primary mt-3">Email-Adresse überprüfen</button>
+            <button id="pruefenButton" class="btn btn-primary"  >Überprüfen</button>
+            <button id="pruefenButton" class="btn btn-secondary">Zurücksetzen</button>
 
 
         </div><!-- container-sm -->
