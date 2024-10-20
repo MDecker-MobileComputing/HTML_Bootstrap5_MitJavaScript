@@ -4,6 +4,7 @@
 
 Dieses Repository enthält einige Webseiten, die mit dem CSS-Framework
 [Bootstrap 5](https://getbootstrap.com/docs/5.3/) erstellt wurden.
+Es wird JavaScript verwendet, aber nicht jQuery.
 
 <br>
 
@@ -12,7 +13,7 @@ https://mdecker-mobilecomputing.github.io/HTML_Bootstrap5_MitJavaScript/
 
 <br>
 
-Siehe [dieses Repo](https://github.com/MDecker-MobileComputing/HTML_BootstrapUndJQuery)
+Für alte Version, siehe [dieses Repo](https://github.com/MDecker-MobileComputing/HTML_BootstrapUndJQuery)
 für Webseiten, die mit *Bootstrap 4* und der JavaScript-Library [jQuery](https://jquery.com/)
 erstellt wurden.
 
