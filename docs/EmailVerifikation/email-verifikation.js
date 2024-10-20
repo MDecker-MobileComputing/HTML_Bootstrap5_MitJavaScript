@@ -160,9 +160,7 @@ function onLoeschenButton() {
     inputLokalerTeil.value    = "";
     inputDomain.value         = "";
     inputTopLevelDomain.value = "";    
-
-    alertErfolg.classList.add( "d-none" );
-
+    
     validInvalidZuruecksetzen();
 }
 
@@ -171,6 +169,8 @@ function onLoeschenButton() {
  * CSS-Klasse .is-valid und .is-invalid von den Eingabefeldern entfernen.
  */
 function validInvalidZuruecksetzen() {
+
+    alertErfolg.classList.add( "d-none" );
 
     inputLokalerTeil.classList.remove(    "is-valid", "is-invalid" );
     inputDomain.classList.remove(         "is-valid", "is-invalid" );
