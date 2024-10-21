@@ -81,7 +81,6 @@ window.addEventListener("load", function () {
  */
 function onLoeschenButton() {
 
-    // remove all child nodes of divErgebnis
     divErgebnis.innerHTML = "";
 
     buttonLoeschen.classList.add( "d-none" );
