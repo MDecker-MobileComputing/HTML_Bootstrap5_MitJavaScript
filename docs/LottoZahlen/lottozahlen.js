@@ -83,7 +83,7 @@ function onLoeschenButton() {
 
     divErgebnis.innerHTML = "";
 
-    buttonLoeschen.classList.add( "d-none" );
+    buttonLoeschen.classList.add( "d-none" ); // .d-done: Element wird ausgeblendet (display: none)
 }
 
 
