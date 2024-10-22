@@ -23,7 +23,7 @@ window.addEventListener("load", function () {
     divNachrichten = document.getElementById( "listGroupNachrichten" );
     if ( !divNachrichten ) {
 
-            console.error( "Wurzelelement für Nachrichtenliste nicht gefunden!" );
+        console.error( "Wurzelelement für Nachrichtenliste nicht gefunden!" );
     }
 
     checkboxNurInland = document.getElementById( "checkboxNurInland" );
