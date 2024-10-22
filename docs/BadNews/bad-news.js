@@ -58,7 +58,7 @@ async function onButtonNachrichtenLaden() {
             throw new Error( "Fehler beim Laden der Nachrichten: " + antwort.status );
         }
         const antwortJSON = await antwort.json();
-        nachrichtenAnzeigen( antwortJSON.items );
+        nachrichtenAnzeigen( antwortJSON.items, nurInland );
     }
     catch (fehler) {
 
@@ -69,15 +69,24 @@ async function onButtonNachrichtenLaden() {
 /**
  * Diese Funktion zeigt die Nachrichten in der Liste an.
  */
-function nachrichtenAnzeigen(schlagzeilenItems) {
+function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
 
     for (let i = 0; i < schlagzeilenItems.length; i++) {
 
-        const schlagzeile = schlagzeilenItems[i].schlagzeile;
+        const schlagzeileText = schlagzeilenItems[i].schlagzeile;
+        const istInland       = schlagzeilenItems[i].inland;
 
         const divNachricht = document.createElement( "li" );
-        divNachricht.classList.add( "list-group-item" );
-        divNachricht.textContent = schlagzeile;
+        divNachricht.classList.add( "list-group-item", "d-flex", "justify-content-between", "align-items-center" );
+        divNachricht.textContent = schlagzeileText;
+
+        if (!nurInland && !istInland) {
+
+            const badge = document.createElement( "span" );
+            badge.classList.add( "badge", "bg-primary", "ms-2" );
+            badge.textContent = "international";
+            divNachricht.appendChild( badge );
+        }
 
         divNachrichten.appendChild( divNachricht );
     }
