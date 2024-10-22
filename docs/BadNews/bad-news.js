@@ -80,11 +80,21 @@ function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
         divNachricht.classList.add( "list-group-item", "d-flex", "justify-content-between", "align-items-center" );
         divNachricht.textContent = schlagzeileText;
 
-        if (!nurInland && !istInland) {
+        if ( !nurInland ) {
 
             const badge = document.createElement( "span" );
-            badge.classList.add( "badge", "bg-primary", "ms-2" );
-            badge.textContent = "international";
+            badge.classList.add( "badge", "ms-2" );
+            if ( istInland ) {
+
+                badge.classList.add( "bg-primary" ); // blau
+                badge.textContent = "Inland";
+
+            } else {
+
+                badge.classList.add( "bg-success" ); // grün
+                badge.textContent = "Welt";
+            }
+
             divNachricht.appendChild( badge );
         }
 
