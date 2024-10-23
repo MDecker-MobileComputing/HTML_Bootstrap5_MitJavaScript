@@ -2,6 +2,8 @@
 
 let divNachrichten    = null;
 let checkboxNurInland = null;
+let rangeAnzahl       = null;
+let spanAnzahl        = null;
 
 
 /**
@@ -32,8 +34,35 @@ window.addEventListener("load", function () {
         console.error( "Checkbox 'Nur Inland' nicht gefunden!" );
     }
 
+    rangeAnzahl = document.getElementById( "rangeAnzahl" );
+    if ( rangeAnzahl ) {
+
+        rangeAnzahl.addEventListener( "input", onNeueAnzahl );
+
+    } else {
+
+        console.error( "Range-Element 'Anzahl' nicht gefunden!" );
+    }
+
+    spanAnzahl = document.getElementById( "spanAnzahl" );
+    if ( !spanAnzahl ) {
+
+        console.error( "Span-Element für Anzeige der Anzahl nicht gefunden!" );
+    }
+
     console.log( "Initialisierung abgeschlossen." );
 });
+
+
+/**
+ * Event-Handler-Funktion für Änderungen am Range-Element für die Anzahl der
+ * Schlagzeilen.
+ */
+function onNeueAnzahl() {
+
+    const anzahl = rangeAnzahl.value;
+    spanAnzahl.textContent = anzahl;
+}
 
 
 /**
@@ -44,8 +73,9 @@ async function onButtonNachrichtenLaden() {
 
     divNachrichten.innerHTML = "";
 
+    const anzahl    = rangeAnzahl.value;
     const nurInland = checkboxNurInland.checked;
-    const url       = "https://api.el-decker.de/badnews.php?anzahl=10&nur_inland=" + nurInland;
+    const url       = `https://api.el-decker.de/badnews.php?anzahl=${anzahl}&nur_inland=${nurInland}`;
 
     console.log( "Nachrichten werden von Web-API geladen ..." );
 

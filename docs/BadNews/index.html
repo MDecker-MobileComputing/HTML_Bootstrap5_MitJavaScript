@@ -18,14 +18,20 @@
                 <a href="https://www.dict.cc/?s=molasses" target="_blank">molasses</a>."
             </p>
 
-            <div class="d-flex justify-content-center mb-3">
-                <button id="buttonNewsHolen" class="btn btn-primary me-5">Nachrichten laden</button>
-                <div class="form-check">
-                    <input id="checkboxNurInland" class="form-check-input" type="checkbox" >
+            <div class="row gy-4 gx-3 align-items-center">
+                <div class="col-lg-1"></div><!-- leere Spalte für "large" -->
+                <button id="buttonNewsHolen" class="btn btn-primary col-lg-2 col-md-4 me-3">Nachrichten laden</button><!-- col-auto: natürliche Breite -->
+                <div class="form-check me-5 col-lg-1 col-md-2">
+                    <input id="checkboxNurInland" class="form-check-input" type="checkbox">
                     <label class="form-check-label" for="nurInland">Nur Inland</label>
                 </div>
-            </div>
+                <div class="col-lg-5 col-md-10">
+                    <label for="rangeNewsCount" class="form-label me-2">Anzahl:</label>
+                    <input id="rangeAnzahl" class="form-range me-3" type="range" min="1" max="30" value="15">
 
+                </div>
+                <div id="spanAnzahl" class="col-lg-1 col-md-2">15</div>
+            </div>
 
             <div class="container">
                 <div class="row justify-content-center">
@@ -36,6 +42,16 @@
                     </div>
                 </div>
             </div>
+
+            <!--
+            <div class="row mt-5 text-center">
+                <div class="d-block d-sm-none"           ><h3><b>Aktuelle Größenstufe:</b> <code>extra small (xs)</code></h3></div>
+                <div class="d-none d-sm-block d-md-none" ><h3><b>Aktuelle Größenstufe:</b> <code>small (sm)</code></h3></div>
+                <div class="d-none d-md-block d-lg-none" ><h3><b>Aktuelle Größenstufe:</b> <code>medium (md)</code></h3></div>
+                <div class="d-none d-lg-block d-xl-none" ><h3><b>Aktuelle Größenstufe:</b> <code>large (lg)</code></h3></div>
+                <div class="d-none d-xl-block"           ><h3><b>Aktuelle Größenstufe:</b> <code>extra large (xl)</code></h3></div>
+            </div>
+            -->
 
         </div><!-- container-sm -->
 
