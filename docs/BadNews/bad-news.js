@@ -3,7 +3,7 @@
 let divNachrichten    = null;
 let checkboxNurInland = null;
 let rangeAnzahl       = null;
-let spanAnzahl        = null;
+let divAnzahl         = null;
 
 
 /**
@@ -54,10 +54,10 @@ window.addEventListener("load", function () {
         console.error( "Range-Element 'Anzahl' nicht gefunden!" );
     }
 
-    spanAnzahl = document.getElementById( "spanAnzahl" );
-    if ( !spanAnzahl ) {
+    divAnzahl = document.getElementById( "divAnzahl" );
+    if ( !divAnzahl ) {
 
-        console.error( "Span-Element für Anzeige der Anzahl nicht gefunden!" );
+        console.error( "Element für Anzeige der Anzahl nicht gefunden!" );
     }
 
     console.log( "Initialisierung abgeschlossen." );
@@ -71,7 +71,7 @@ window.addEventListener("load", function () {
 function onNeueAnzahl() {
 
     const anzahl = rangeAnzahl.value;
-    spanAnzahl.textContent = anzahl;
+    divAnzahl.textContent = anzahl;
 }
 
 
