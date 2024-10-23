@@ -22,6 +22,16 @@ window.addEventListener("load", function () {
         console.error( "Button 'Nachrichten laden' nicht gefunden!" );
     }
 
+    let buttonZuruecksetzen = document.getElementById( "buttonZuruecksetzen" );
+    if ( buttonZuruecksetzen ) {
+
+        buttonZuruecksetzen.addEventListener( "click", onButtonZuruecksetzen );
+
+    } else {
+
+        console.error( "Button 'Zurücksetzen' nicht gefunden!" );
+    }
+
     divNachrichten = document.getElementById( "listGroupNachrichten" );
     if ( !divNachrichten ) {
 
@@ -31,7 +41,7 @@ window.addEventListener("load", function () {
     checkboxNurInland = document.getElementById( "checkboxNurInland" );
     if ( !checkboxNurInland ) {
 
-        console.error( "Checkbox 'Nur Inland' nicht gefunden!" );
+        console.error( "Checkbox für 'Nur Inland' nicht gefunden!" );
     }
 
     rangeAnzahl = document.getElementById( "rangeAnzahl" );
@@ -62,6 +72,22 @@ function onNeueAnzahl() {
 
     const anzahl = rangeAnzahl.value;
     spanAnzahl.textContent = anzahl;
+}
+
+
+/**
+ * Event-Handler für Button zum Zurücksetzen der Anwendung.
+ */
+function onButtonZuruecksetzen() {
+
+    // Evtl. angezeigte Nachrichten löschen
+    divNachrichten.innerHTML = "";
+
+    // Eingabefelder zurücksetzen
+    rangeAnzahl.value         = 5;
+    onNeueAnzahl();
+
+    checkboxNurInland.checked = false;
 }
 
 
