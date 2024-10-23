@@ -1,8 +1,8 @@
 "use strict";
 
-let divNachrichten = null;
-
+let divNachrichten    = null;
 let checkboxNurInland = null;
+
 
 /**
  * Diese Funktion wird aufgerufen, wenn das Dokument inkl. aller
@@ -45,18 +45,18 @@ async function onButtonNachrichtenLaden() {
     divNachrichten.innerHTML = "";
 
     const nurInland = checkboxNurInland.checked;
-
-    const url = "https://api.el-decker.de/badnews.php?anzahl=10&nur_inland=" + nurInland;
-
+    const url       = "https://api.el-decker.de/badnews.php?anzahl=10&nur_inland=" + nurInland;
 
     console.log( "Nachrichten werden von Web-API geladen ..." );
 
     try {
+
         const antwort = await fetch( url );
         if (!antwort.ok) {
 
             throw new Error( "Fehler beim Laden der Nachrichten: " + antwort.status );
         }
+
         const antwortJSON = await antwort.json();
         nachrichtenAnzeigen( antwortJSON.items, nurInland );
     }
@@ -77,7 +77,11 @@ function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
         const istInland       = schlagzeilenItems[i].inland;
 
         const divNachricht = document.createElement( "li" );
-        divNachricht.classList.add( "list-group-item", "d-flex", "justify-content-between", "align-items-center" );
+        divNachricht.classList.add( "list-group-item",
+                                    "d-flex",
+                                    "justify-content-between",
+                                    "align-items-center"
+                                  );
         divNachricht.textContent = schlagzeileText;
 
         if ( !nurInland ) {
