@@ -84,7 +84,7 @@ function onButtonZuruecksetzen() {
     divNachrichten.innerHTML = "";
 
     // Eingabefelder zurücksetzen
-    rangeAnzahl.value         = 5;
+    rangeAnzahl.value = 5;
     onNeueAnzahl();
 
     checkboxNurInland.checked = false;
@@ -121,6 +121,7 @@ async function onButtonNachrichtenLaden() {
         console.error( "Fehler beim Laden der Nachrichten: " + fehler );
     }
 }
+
 
 /**
  * Diese Funktion zeigt die Nachrichten in der Liste an.
@@ -160,5 +161,4 @@ function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
 
         divNachrichten.appendChild( divNachricht );
     }
-
 }
