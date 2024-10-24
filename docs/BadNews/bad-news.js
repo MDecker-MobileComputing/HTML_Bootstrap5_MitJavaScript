@@ -15,7 +15,7 @@ window.addEventListener("load", function () {
     let buttonLaden = document.getElementById( "buttonNewsHolen" );
     if ( buttonLaden ) {
 
-        buttonLaden.addEventListener( "click", onButtonNachrichtenLaden );
+        buttonLaden.addEventListener( "click", onButtonSchlagzeilenLaden );
 
     } else {
 
@@ -95,7 +95,7 @@ function onButtonZuruecksetzen() {
  * Event-Handler für Button zum Laden von Nachrichten von Web-API.
  * Doku der Web-API: https://api.el-decker.de/badnews_doku.html
  */
-async function onButtonNachrichtenLaden() {
+async function onButtonSchlagzeilenLaden() {
 
     divNachrichten.innerHTML = "";
 
@@ -124,7 +124,7 @@ async function onButtonNachrichtenLaden() {
 
 
 /**
- * Diese Funktion zeigt die Nachrichten in der Liste an.
+ * Diese Funktion zeigt die Schlagzeilen in der Liste an.
  */
 function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
 
@@ -133,13 +133,13 @@ function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
         const schlagzeileText = schlagzeilenItems[i].schlagzeile;
         const istInland       = schlagzeilenItems[i].inland;
 
-        const divNachricht = document.createElement( "li" );
-        divNachricht.classList.add( "list-group-item",
+        const listeneintrag = document.createElement( "li" );
+        listeneintrag.classList.add( "list-group-item",
                                     "d-flex",
                                     "justify-content-between",
                                     "align-items-center"
                                   );
-        divNachricht.textContent = schlagzeileText;
+        listeneintrag.textContent = schlagzeileText;
 
         if ( !nurInland ) {
 
@@ -156,9 +156,9 @@ function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
                 badge.textContent = "Welt";
             }
 
-            divNachricht.appendChild( badge );
+            listeneintrag.appendChild( badge );
         }
 
-        divNachrichten.appendChild( divNachricht );
+        divNachrichten.appendChild( listeneintrag );
     }
 }
