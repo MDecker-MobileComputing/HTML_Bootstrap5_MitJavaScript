@@ -1,6 +1,6 @@
 "use strict";
 
-let divNachrichten    = null;
+let ulNachrichten     = null;
 let checkboxNurInland = null;
 let rangeAnzahl       = null;
 let divAnzahl         = null;
@@ -32,8 +32,8 @@ window.addEventListener("load", function () {
         console.error( "Button 'Zurücksetzen' nicht gefunden!" );
     }
 
-    divNachrichten = document.getElementById( "listGroupNachrichten" );
-    if ( !divNachrichten ) {
+    ulNachrichten = document.getElementById( "listGroupNachrichten" );
+    if ( !ulNachrichten ) {
 
         console.error( "Wurzelelement für Nachrichtenliste nicht gefunden!" );
     }
@@ -81,7 +81,7 @@ function onNeueAnzahl() {
 function onButtonZuruecksetzen() {
 
     // Evtl. angezeigte Nachrichten löschen
-    divNachrichten.innerHTML = "";
+    ulNachrichten.innerHTML = "";
 
     // Eingabefelder zurücksetzen
     rangeAnzahl.value = 5;
@@ -97,7 +97,7 @@ function onButtonZuruecksetzen() {
  */
 async function onButtonSchlagzeilenLaden() {
 
-    divNachrichten.innerHTML = "";
+    ulNachrichten.innerHTML = "";
 
     const anzahl    = rangeAnzahl.value;
     const nurInland = checkboxNurInland.checked;
@@ -126,6 +126,7 @@ async function onButtonSchlagzeilenLaden() {
 /**
  * Diese Funktion zeigt die Schlagzeilen in der Liste an.
  */
+
 function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
 
     for (let i = 0; i < schlagzeilenItems.length; i++) {
@@ -135,10 +136,10 @@ function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
 
         const listeneintrag = document.createElement( "li" );
         listeneintrag.classList.add( "list-group-item",
-                                    "d-flex",
-                                    "justify-content-between",
-                                    "align-items-center"
-                                  );
+                                     "d-flex",
+                                     "justify-content-between",
+                                     "align-items-center"
+                                   );
         listeneintrag.textContent = schlagzeileText;
 
         if ( !nurInland ) {
@@ -159,6 +160,7 @@ function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
             listeneintrag.appendChild( badge );
         }
 
-        divNachrichten.appendChild( listeneintrag );
+        ulNachrichten.appendChild( listeneintrag );
     }
 }
+
