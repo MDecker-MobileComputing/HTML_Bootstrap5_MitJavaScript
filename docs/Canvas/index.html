@@ -15,7 +15,7 @@
             <h1 class="text-center mt-3 mb-5">Canvas-Element und Bootstrap 5</h1>
 
             <p>
-                Mit dem Canvas-Element können beliebige geometrische Formen gezeichnet werden – probieren Sie es aus!
+                Mit dem Canvas-Element von HTML5 können beliebige geometrische Formen gezeichnet werden – probieren Sie es aus!
             </p>
 
             <div class="btn-group mb-4">
@@ -43,7 +43,13 @@
                     <li><a id="bezier"  class="dropdown-item">Bézierkurve</a></li>
                     </ul>
                 </div>
-            </div>
+
+                <div class="form-check form-switch ms-5">
+                    <input id="schalterFuellen" class="form-check-input" type="checkbox" role="switch" >
+                    <label class="form-check-label" for="switchFuellen">geschlossene Flächen füllen</label>
+                  </div>
+
+            </div><!-- btn-group -->
 
             <div class="d-flex justify-content-center align-items-center">
                 <canvas id="zeichenflaeche">

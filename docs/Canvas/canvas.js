@@ -10,6 +10,9 @@ let zeichenKontext = null;
 let zeichenflaecheBreite = -1;
 let zeichenflaecheHoehe  = -1;
 
+/** Referenz auf <input>-Element für Schalter "Füllen". */
+let schalterFuellen = null;
+
 
 /**
  * Diese Funktion wird aufgerufen, wenn das Dokument inkl. aller
@@ -34,6 +37,13 @@ window.addEventListener( "load", function() {
         }
 
         canvasGroesseSetzen();
+    }
+
+
+    schalterFuellen = document.getElementById( "schalterFuellen" );
+    if ( !schalterFuellen ) {
+
+        console.error( "Schalter 'Füllen' nicht gefunden." );
     }
 
     registriereEventHandlerFuerForm( "diagonalen", zeichneDiagonalen  );
@@ -158,7 +168,6 @@ function zeichneDreieck() {
     const cx = zeichenflaecheBreite - abstandRand;
     const cy = by;
 
-    zeichenKontext.fillStyle   = "#ff00ff"; // violett
     zeichenKontext.strokeStyle = "black";
 
     zeichenKontext.beginPath();
@@ -168,7 +177,8 @@ function zeichneDreieck() {
     zeichenKontext.closePath();
 
     zeichenKontext.stroke(); // Rand zeichnen
-    zeichenKontext.fill();   // Figur füllen
+
+
 }
 
 
@@ -192,6 +202,12 @@ function zeichneRechteck() {
                          abstandRand,  // y
                          breite, hoehe );
     zeichenKontext.stroke();
+
+    if ( schalterFuellen.checked ) {
+
+        zeichenKontext.fillStyle = "orange";
+        zeichenKontext.fill();
+    }
 }
 
 
@@ -199,6 +215,8 @@ function zeichneRechteck() {
  * Funktion um Kreis auf Canvas zu zeichnen.
  */
 function zeichneKreis() {
+
+    zeichenflaecheLoeschen();
 
     const mittelpunktX = zeichenflaecheBreite / 2;
     const mittelpunktY = zeichenflaecheHoehe  / 2;
@@ -214,6 +232,12 @@ function zeichneKreis() {
                         2 * Math.PI // Endwinkel
                       );
     zeichenKontext.stroke();
+
+    if ( schalterFuellen.checked ) {
+
+        zeichenKontext.fillStyle = "orange";
+        zeichenKontext.fill();
+    }
 }
 
 
@@ -221,6 +245,8 @@ function zeichneKreis() {
  * Funktion um Ellpise auf Canvas zu zeichnen.
  */
 function zeichneEllipse() {
+
+    zeichenflaecheLoeschen();
 
     const mittelpunktX = zeichenflaecheBreite / 2;
     const mittelpunktY = zeichenflaecheHoehe  / 2;
@@ -238,6 +264,12 @@ function zeichneEllipse() {
                             2 * Math.PI // Endwinkel
                           );
     zeichenKontext.stroke();
+
+    if ( schalterFuellen.checked ) {
+
+        zeichenKontext.fillStyle = "orange";
+        zeichenKontext.fill();
+    }
 }
 
 
@@ -245,6 +277,8 @@ function zeichneEllipse() {
  * Funktion um Bezierkurve auf Canvas zu zeichnen.
  */
 function zeichneBezierkurve() {
+
+    zeichenflaecheLoeschen();
 
     const startpunktX = 0;
     const startpunktY = 0;
