@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" >
+        <title>Canvas-Element und Bootstrap 5</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="canvas.css">
+    </head>
+    <body>
+
+        <div class="container-sm my-3">
+
+            <h1 class="text-center mt-3 mb-5">Canvas-Element und Bootstrap 5</h1>
+
+            <p>
+                Mit dem Canvas-Element können beliebige geometrische Formen gezeichnet werden – probieren Sie es aus!
+            </p>
+
+            <div class="btn-group mb-4">
+
+                <div class="dropdown me-2">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Gerade und eckig
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a id="diagonalen" class="dropdown-item">Diagonalen</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a id="dreieck"    class="dropdown-item">Dreieck</a></li>
+                        <li><a id="rechteck"   class="dropdown-item">Rechteck</a></li>
+                    </ul>
+                </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Rund und gebogen
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li><a id="kreis"   class="dropdown-item">Kreis</a></li>
+                    <li><a id="ellipse" class="dropdown-item">Ellipse</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a id="bezier"  class="dropdown-item">Bézierkurve</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center">
+                <canvas id="zeichenflaeche">
+                    Ihr Browser unterstützt das Canvas-Element (Zeichenfläche) von HTML5 nicht.
+                </canvas>
+            </div>
+
+        </div><!-- container -->
+
+        <script src="./canvas.js"></script>
+
+    </body>
+</html>
