@@ -1,8 +1,6 @@
 
+/** Regeln für die Zeichenfläche */
 canvas {
 
     border: 1px solid black;
-
-    width : 95vw;
-    height: 60vh;
 }
