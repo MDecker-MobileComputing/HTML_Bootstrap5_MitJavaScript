@@ -70,6 +70,8 @@ window.addEventListener( "resize", function() {
 /**
  * Größe von <canvas>-Element programmatisch in Abhängigkeit aktueller
  * Viewport-Größe setzen, damit keine unscharfen Linien entstehen.
+ * Es werden sowohl die interne Größe des Elements als auch die
+ * CSS-Größe (=Größe auf Bildschirm) auf dieselben Werte gesetzt.
  *
  * siehe auch: https://stackoverflow.com/a/61902385/1364368
  *
@@ -78,10 +80,10 @@ window.addEventListener( "resize", function() {
 function canvasGroesseSetzen() {
 
     zeichenflaecheBreite =  80 * window.innerWidth  / 100;
-    zeichenflaecheHoehe  =  50 * window.innerHeight / 100 || 766; // 766: Fallback-Wert
+    zeichenflaecheHoehe  =  50 * window.innerHeight / 100 || 766; // 766: Fallback-Wert für innerHeight===null
 
-    zeichenflaeche.width  = zeichenflaecheBreite;
-    zeichenflaeche.height = zeichenflaecheHoehe;
+    zeichenflaeche.width        = zeichenflaecheBreite;
+    zeichenflaeche.height       = zeichenflaecheHoehe;
     zeichenflaeche.style.width  = zeichenflaecheBreite;
     zeichenflaeche.style.height = zeichenflaecheHoehe;
 
@@ -128,7 +130,9 @@ function zeichenflaecheLoeschen() {
  * wenn dies mit dem Schalter vom Nutzer aktiviert ist.
  * Diese Funktion darf nur am Ende von zeichneXXX()-Funktionen
  * aufgerufen werden, die eine Form zeichnen, die eine
- * geschlossene Fläche hat.
+ * geschlossene Fläche hat. in zeichneXXX()-Funktionen, die
+ * diese Funktion aufrufen, sollte "black" als strokeStyle
+ * (also Farbe für den Rand der Fläche) verwendet werden.
  */
 function beiBedarfFuellen() {
 
@@ -211,7 +215,7 @@ function zeichneRechteck() {
     const breite = zeichenflaecheBreite - 2*abstandRand;
     const hoehe  = zeichenflaecheHoehe  - 2*abstandRand;
 
-    zeichenKontext.strokeStyle = "red";
+    zeichenKontext.strokeStyle = "black";
 
     // Rechteck zeichnen
     zeichenKontext.beginPath();
@@ -236,7 +240,7 @@ function zeichneKreis() {
 
     const radius = Math.min( zeichenflaecheBreite, zeichenflaecheHoehe ) * 0.4;
 
-    zeichenKontext.strokeStyle = "green";
+    zeichenKontext.strokeStyle = "black";
 
     zeichenKontext.beginPath();
     zeichenKontext.arc( mittelpunktX, mittelpunktY,
@@ -263,7 +267,7 @@ function zeichneEllipse() {
     const radiusHorizontal = zeichenflaecheBreite * 0.5 * 0.9;
     const radiusVertikal   = zeichenflaecheHoehe  * 0.5 * 0.4;
 
-    zeichenKontext.strokeStyle = "green";
+    zeichenKontext.strokeStyle = "black";
 
     zeichenKontext.beginPath();
     zeichenKontext.ellipse( mittelpunktX    , mittelpunktY,

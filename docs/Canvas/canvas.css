@@ -1,8 +1,7 @@
 
-/** Regeln für die Zeichenfläche */
 canvas {
 
-    border: 1px solid black;
+    border: 1px solid darkgrey; /* dünner Rand um Zeichenfläche */
 }
 
 
