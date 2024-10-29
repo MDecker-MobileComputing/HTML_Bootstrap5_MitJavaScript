@@ -124,6 +124,23 @@ function zeichenflaecheLoeschen() {
 
 
 /**
+ * Funktion um gezeichnete Form zu füllen, aber nur,
+ * wenn dies mit dem Schalter vom Nutzer aktiviert ist.
+ * Diese Funktion darf nur am Ende von zeichneXXX()-Funktionen
+ * aufgerufen werden, die eine Form zeichnen, die eine
+ * geschlossene Fläche hat.
+ */
+function beiBedarfFuellen() {
+
+    if ( schalterFuellen.checked ) {
+
+        zeichenKontext.fillStyle = "orange";
+        zeichenKontext.fill();
+    }
+}
+
+
+/**
  * Funktion um Diagonalen auf Canvas einzuzeichnen.
  */
 function zeichneDiagonalen() {
@@ -178,7 +195,7 @@ function zeichneDreieck() {
 
     zeichenKontext.stroke(); // Rand zeichnen
 
-
+    beiBedarfFuellen();
 }
 
 
@@ -203,11 +220,7 @@ function zeichneRechteck() {
                          breite, hoehe );
     zeichenKontext.stroke();
 
-    if ( schalterFuellen.checked ) {
-
-        zeichenKontext.fillStyle = "orange";
-        zeichenKontext.fill();
-    }
+    beiBedarfFuellen();
 }
 
 
@@ -233,11 +246,7 @@ function zeichneKreis() {
                       );
     zeichenKontext.stroke();
 
-    if ( schalterFuellen.checked ) {
-
-        zeichenKontext.fillStyle = "orange";
-        zeichenKontext.fill();
-    }
+    beiBedarfFuellen();
 }
 
 
@@ -265,11 +274,7 @@ function zeichneEllipse() {
                           );
     zeichenKontext.stroke();
 
-    if ( schalterFuellen.checked ) {
-
-        zeichenKontext.fillStyle = "orange";
-        zeichenKontext.fill();
-    }
+    beiBedarfFuellen();
 }
 
 
