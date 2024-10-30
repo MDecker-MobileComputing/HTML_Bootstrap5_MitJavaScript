@@ -260,7 +260,8 @@ function zeichneKreis() {
     const mittelpunktX = zeichenflaecheBreite / 2;
     const mittelpunktY = zeichenflaecheHoehe  / 2;
 
-    const radius = Math.min( zeichenflaecheBreite, zeichenflaecheHoehe ) * 0.4;
+    const radius = 0.4 * Math.min( zeichenflaecheBreite,
+                                   zeichenflaecheHoehe );
 
     zeichenKontext.strokeStyle = "black";
 
@@ -305,7 +306,7 @@ function zeichneEllipse() {
 
 
 /**
- * Funktion um Bezierkurve auf Canvas zu zeichnen.
+ * Funktion um Bezierkurve im Canvas-Element zu zeichnen.
  */
 function zeichneBezierkurve() {
 
@@ -334,7 +335,7 @@ function zeichneBezierkurve() {
 
 
 /**
- * Funktion um mit Chart.js ein Kuchendiagramm auf Canvas zu zeichnen.
+ * Funktion um mit Chart.js ein Kuchendiagramm im Canvas-Element zu zeichnen.
  */
 function zeichneChartJsKuchendiagramm() {
 
@@ -362,7 +363,7 @@ function zeichneChartJsKuchendiagramm() {
 
 
 /**
- * Funktion um mit Chart.js ein Balkendiagramm auf Canvas zu zeichnen.
+ * Funktion um mit Chart.js ein Balkendiagramm im Canvas-Element zu zeichnen.
  */
 function zeichneChartJsBalkendiagramm() {
 
@@ -396,7 +397,7 @@ function zeichneChartJsBalkendiagramm() {
 
 
 /**
- * Funktion um mit Chart.js ein Balkendiagramm auf Canvas zu zeichnen.
+ * Funktion um mit Chart.js ein Balkendiagramm im Canvas-Element zu zeichnen.
  */
 function zeichneChartJsLiniendiagramm() {
 
