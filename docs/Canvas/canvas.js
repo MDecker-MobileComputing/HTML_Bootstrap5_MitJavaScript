@@ -13,6 +13,9 @@ let zeichenflaecheHoehe  = -1;
 /** Referenz auf <input>-Element für Schalter "Füllen". */
 let schalterFuellen = null;
 
+/** Referenz auf mit Chart.js erzeugtes Diagramm */
+let chartJsDiagramm = null;
+
 
 /**
  * Diese Funktion wird aufgerufen, wenn das Dokument inkl. aller
@@ -52,6 +55,9 @@ window.addEventListener( "load", function() {
     registriereEventHandlerFuerForm( "kreis"     , zeichneKreis       );
     registriereEventHandlerFuerForm( "ellipse"   , zeichneEllipse     );
     registriereEventHandlerFuerForm( "bezier"    , zeichneBezierkurve );
+
+    registriereEventHandlerFuerForm( "kuchen"    , zeichneChartJsKuchendiagramm );
+    registriereEventHandlerFuerForm( "balken"    , zeichneChartJsBalkendiagramm );
 
     console.log( "Initialisierung abgeschlossen." );
 });
@@ -308,4 +314,84 @@ function zeichneBezierkurve() {
     zeichenKontext.moveTo( startpunktX, startpunktY );
     zeichenKontext.bezierCurveTo( kp1x, kp1y, kp2x, kp2y, endpunktX, endpunktY );
     zeichenKontext.stroke();
+}
+
+
+/**
+ * Funktion um mit Chart.js Kuchendiagramm auf Canvas zu zeichnen.
+ */
+function zeichneChartJsKuchendiagramm() {
+
+    if ( chartJsDiagramm ) { chartJsDiagramm.destroy(); }
+
+    const datenObjekt =
+        {
+            labels: [ "Partei A", "Partei B", "Partei C", "Ungültig" ],
+            datasets: [
+              {
+                label: "Anzahl Stimmen",
+                data: [ 25, 40, 66, 10 ], // absolute Zahlen, keine Prozentwerte!
+                borderWidth: 1
+              }
+            ]
+          };
+
+    // Die Optionen responsive=false und maintainAspectRatio=false verhindern,
+    // dass das Diagramm die Größe des Canvas-Elements anpasst.
+    const optionenObjekt = {
+                                responsive: false,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    y: { beginAtZero: true }
+                                }
+                            };
+
+    const chartObjekt = {
+                          type   : "pie",
+                          data   : datenObjekt,
+                          options: optionenObjekt
+                        };
+
+    chartJsDiagramm = new Chart( zeichenKontext, chartObjekt );
+}
+
+
+function zeichneChartJsBalkendiagramm() {
+
+    if ( chartJsDiagramm ) { chartJsDiagramm.destroy(); }
+
+    const datenObjekt = {
+
+        labels: ["Firma A", "Firma B", "Firma C", "Firma D" ],
+        datasets: [
+            {
+                label: "Verkaufszahlen 2022",
+                data: [ 20500, 10300, 5100, 16300 ],
+                borderWidth: 1
+            },
+            {
+                label: "Verkaufszahlen 2023",
+                data: [ 19100, 12300, 4100, 17300 ],
+                borderWidth: 1
+            }
+        ]
+    };
+
+    // Die Optionen responsive=false und maintainAspectRatio=false verhindern,
+    // dass das Diagramm die Größe des Canvas-Elements anpasst.
+    const optionenObjekt = {
+                                responsive: false,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    y: { beginAtZero: true }
+                                }
+                            };
+
+    const chartObjekt = {
+                            type   : "bar",
+                            data   : datenObjekt,
+                            options: optionenObjekt
+                        };
+
+    chartJsDiagramm = new Chart( zeichenKontext, chartObjekt );
 }
