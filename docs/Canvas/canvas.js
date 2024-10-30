@@ -18,6 +18,21 @@ let chartJsDiagramm = null;
 
 
 /**
+ * Optionen-Objekt für Chart.js-Diagramme.
+ *
+ * Die Optionen responsive=false und maintainAspectRatio=false verhindern,
+ * dass das Diagramm die Größe des Canvas-Elements anpasst.
+ */
+const chartjsOptionen = {
+                            responsive: false,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: { beginAtZero: true }
+                            }
+                        };
+
+
+/**
  * Diese Funktion wird aufgerufen, wenn das Dokument inkl. aller
  * Ressourcen (z.B. Bilder oder Stylesheets) geladen wurde.
  *
@@ -58,6 +73,7 @@ window.addEventListener( "load", function() {
 
     registriereEventHandlerFuerForm( "kuchen"    , zeichneChartJsKuchendiagramm );
     registriereEventHandlerFuerForm( "balken"    , zeichneChartJsBalkendiagramm );
+    registriereEventHandlerFuerForm( "linien"    , zeichneChartJsLiniendiagramm  );
 
     console.log( "Initialisierung abgeschlossen." );
 });
@@ -324,32 +340,21 @@ function zeichneChartJsKuchendiagramm() {
 
     if ( chartJsDiagramm ) { chartJsDiagramm.destroy(); }
 
-    const datenObjekt =
-        {
-            labels: [ "Partei A", "Partei B", "Partei C", "Ungültig" ],
-            datasets: [
-              {
-                label: "Anzahl Stimmen",
-                data: [ 25, 40, 66, 10 ], // absolute Zahlen, keine Prozentwerte!
-                borderWidth: 1
-              }
-            ]
-          };
-
-    // Die Optionen responsive=false und maintainAspectRatio=false verhindern,
-    // dass das Diagramm die Größe des Canvas-Elements anpasst.
-    const optionenObjekt = {
-                                responsive: false,
-                                maintainAspectRatio: false,
-                                scales: {
-                                    y: { beginAtZero: true }
+    const datenObjekt = {
+                            labels: [ "Partei A", "Partei B", "Partei C", "Ungültig" ],
+                            datasets: [
+                                {
+                                    label: "Anzahl Stimmen",
+                                    data: [ 25, 40, 66, 10 ], // absolute Zahlen, keine Prozentwerte!
+                                    borderWidth: 1
                                 }
-                            };
+                            ]
+                        };
 
     const chartObjekt = {
-                          type   : "pie",
-                          data   : datenObjekt,
-                          options: optionenObjekt
+                            type   : "pie",
+                            data   : datenObjekt,
+                            options: chartjsOptionen
                         };
 
     chartJsDiagramm = new Chart( zeichenKontext, chartObjekt );
@@ -380,21 +385,45 @@ function zeichneChartJsBalkendiagramm() {
         ]
     };
 
-    // Die Optionen responsive=false und maintainAspectRatio=false verhindern,
-    // dass das Diagramm die Größe des Canvas-Elements anpasst.
-    const optionenObjekt = {
-                                responsive: false,
-                                maintainAspectRatio: false,
-                                scales: {
-                                    y: { beginAtZero: true }
-                                }
-                            };
-
     const chartObjekt = {
                             type   : "bar",
                             data   : datenObjekt,
-                            options: optionenObjekt
+                            options: chartjsOptionen
                         };
+
+    chartJsDiagramm = new Chart( zeichenKontext, chartObjekt );
+}
+
+
+/**
+ * Funktion um mit Chart.js ein Balkendiagramm auf Canvas zu zeichnen.
+ */
+function zeichneChartJsLiniendiagramm() {
+
+    if ( chartJsDiagramm ) { chartJsDiagramm.destroy(); }
+
+    const datenObjekt = {
+
+        labels: [ "Januar", "Februar", "März", "April", "Mai", "Juni" ],
+        datasets: [
+            {
+                label: "Land A",
+                data: [ 10, 15, 22, 40, 51, 60 ],
+                borderWidth: 1
+              },
+              {
+                label: "Land B",
+                data: [ 4, 15, 8, 55, 35, 32 ],
+                borderWidth: 1
+              }
+        ]
+    };
+
+    const chartObjekt = {
+        type   : "line",
+        data   : datenObjekt,
+        options: chartjsOptionen
+    };
 
     chartJsDiagramm = new Chart( zeichenKontext, chartObjekt );
 }
