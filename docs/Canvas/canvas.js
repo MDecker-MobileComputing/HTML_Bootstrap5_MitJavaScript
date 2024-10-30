@@ -318,7 +318,7 @@ function zeichneBezierkurve() {
 
 
 /**
- * Funktion um mit Chart.js Kuchendiagramm auf Canvas zu zeichnen.
+ * Funktion um mit Chart.js ein Kuchendiagramm auf Canvas zu zeichnen.
  */
 function zeichneChartJsKuchendiagramm() {
 
@@ -356,6 +356,9 @@ function zeichneChartJsKuchendiagramm() {
 }
 
 
+/**
+ * Funktion um mit Chart.js ein Balkendiagramm auf Canvas zu zeichnen.
+ */
 function zeichneChartJsBalkendiagramm() {
 
     if ( chartJsDiagramm ) { chartJsDiagramm.destroy(); }
