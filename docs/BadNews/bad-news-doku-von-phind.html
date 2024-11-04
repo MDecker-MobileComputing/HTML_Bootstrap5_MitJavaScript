@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentation von bad-news.js</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dokumentation von bad-news.js (erstellt von KI "phind")</h1>
+
+    <h2>Übersicht</h2>
+    <p>Dieses Skript handelt sich um eine JavaScript-Anwendung, die Nachrichten aus einer API lädt und in einem Listenformat anzeigt.</p>
+
+    <h2>Funktionsweise</h2>
+    <ol>
+        <li>Das Skript wartet auf das Laden des Dokuments.</li>
+        <li>Es fügt Ereignishandler zu verschiedenen Elementen hinzu:</li>
+        <ul>
+            <li>Ein Klick-Event-Handler für den "Nachrichten laden"-Button</li>
+            <li>Einen Ereignishandler für den "Zurücksetzen"-Button</li>
+            <li>Einen Input-Ereignishandler für das "Anzahl"-Range-Element</li>
+        </ul>
+        <li>Wenn der "Nachrichten laden"-Button geklickt wird, wird die API aufgerufen und die Antwort verarbeitet.</li>
+        <li>Die Nachrichten werden mit der Funktion `nachrichtenAnzeigen()` angezeigt.</li>
+    </ol>
+
+    <h2>Hauptfunktionen</h2>
+    <h3>nachrichtenAnzeigen(schlagzeilenItems, nurInland)</h3>
+    <pre>
+function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
+    for (let i = 0; i < schlagzeilenItems.length; i++) {
+        const schlagzeileText = schlagzeilenItems[i].schlagzeile;
+        const istInland = schlagzeilenItems[i].inland;
+
+        const listeneintrag = document.createElement("li");
+        listeneintrag.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
+        listeneintrag.textContent = schlagzeileText;
+
+        if (!nurInland) {
+            const badge = document.createElement("span");
+            badge.classList.add("badge", "ms-2");
+            if (istInland) {
+                badge.classList.add("bg-primary"); // blau
+                badge.textContent = "Inland";
+            } else {
+                badge.classList.add("bg-success"); // grün
+                badge.textContent = "Welt";
+            }
+            listeneintrag.appendChild(badge);
+        }
+
+        ulNachrichten.appendChild(listeneintrag);
+    }
+}
+    </pre>
+    <p>Diese Funktion erstellt und fügt Listenelemente für jede Nachricht hinzu. Sie behandelt auch die Hinzufügung eines Badge-Elements für die Nachrichtenart ("Inland" oder "Welt").</p>
+
+    <h3>onButtonSchlagzeilenLaden()</h3>
+    <pre>
+async function onButtonSchlagzeilenLaden() {
+    ulNachrichten.innerHTML = "";
+
+    const anzahl = rangeAnzahl.value;
+    const nurInland = checkboxNurInland.checked;
+    const url = `https://api.el-decker.de/badnews.php?anzahl=${anzahl}&nur_inland=${nurInland}`;
+
+    console.log("Nachrichten werden von Web-API geladen ...");
+
+    try {
+        const antwort = await fetch(url);
+        if (!antwort.ok) {
+            throw new Error("Fehler beim Laden der Nachrichten: " + antwort.status);
+        }
+
+        const antwortJSON = await antwort.json();
+        nachrichtenAnzeigen(antwortJSON.items, nurInland);
+    } catch (fehler) {
+        console.error("Fehler beim Laden der Nachrichten: " + fehler);
+    }
+}
+    </pre>
+    <p>Dieser Ereignishandler wird auf einen Klick des "Nachrichten laden"-Buttons aufgerufen. Er lädt die Nachrichten von der API, verarbeitet die Antwort und ruft dann `nachrichtenAnzeigen()` auf.</p>
+
+    <h3>onButtonZuruecksetzen()</h3>
+    <pre>
+function onButtonZuruecksetzen() {
+    ulNachrichten.innerHTML = "";
+    rangeAnzahl.value = 5;
+    onNeueAnzahl();
+    checkboxNurInland.checked = false;
+}
+    </pre>
+    <p>Dieser Ereignishandler wird auf einen Klick des "Zurücksetzen"-Buttons aufgerufen. Er leert die Nachrichtenliste, setzt den Anzahlswert zurück und deaktiviert das "Nur Inland"-Checkbox-Element.</p>
+
+    <h3>onNeueAnzahl()</h3>
+    <pre>
+function onNeueAnzahl() {
+    const anzahl = rangeAnzahl.value;
+    divAnzahl.textContent = anzahl;
+}
+    </pre>
+    <p>Dieser Ereignishandler wird auf Änderungen im Wert des "Anzahl"-Range-Elements aufgerufen. Er aktualisiert das angezeigte Anzahlswert in der entsprechenden Div-Element.</p>
+
+    <h2>API-Anbindung</h2>
+    <p>Das Skript nutzt eine externe API für die Abfrage von Nachrichten:</p>
+    <ul>
+        <li>URL: https://api.el-decker.de/badnews.php</li>
+        <li>Parameter:</li>
+        <ul>
+            <li>anzahl: Die Anzahl der Nachrichten zu laden</li>
+            <li>nur_inland: Boolean-Wert, ob nur Inlandsnachrichten geladen werden sollen</li>
+        </ul>
+    </ul>
+
+    <h2>Fehlerbehandlung</h2>
+    <p>Das Skript verwendet try-catch-Blöcke zur Fehlerbehandlung bei der API-Aufruf-Funktion. Es gibt auch Konsolennachrichten für verschiedene Fehlerfälle aus.</p>
+
+    <h2>Zukünftige Verbesserungsmöglichkeiten</h2>
+    <ul>
+        <li>Hinzufügen von Filteroptionen für Nachrichtentypen oder Themen</li>
+        <li>Implementierung einer Caching-Methode für häufig verwendete Daten</li>
+        <li>Hinzufügen von Animations-Effekten beim Laden und Anzeigen der Nachrichten</li>
+    </ul>
+
+    <footer>
+        <p>Dokumentation erstellt am [Datum].</p>
+    </footer>
+</body>
+</html>
