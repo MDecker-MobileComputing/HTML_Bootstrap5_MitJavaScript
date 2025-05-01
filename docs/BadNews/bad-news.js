@@ -10,7 +10,7 @@ let divAnzahl         = null;
  * Diese Funktion wird aufgerufen, wenn das Dokument inkl. aller
  * Ressourcen (z.B. Bilder oder Stylesheets) geladen wurde.
  */
-window.addEventListener("load", function () {
+window.addEventListener( "load", function () {
 
     let buttonLaden = document.getElementById( "buttonNewsHolen" );
     if ( buttonLaden ) {
@@ -126,8 +126,7 @@ async function onButtonSchlagzeilenLaden() {
 /**
  * Diese Funktion zeigt die Schlagzeilen in der Liste an.
  */
-
-function nachrichtenAnzeigen(schlagzeilenItems, nurInland) {
+function nachrichtenAnzeigen( schlagzeilenItems, nurInland ) {
 
     for (let i = 0; i < schlagzeilenItems.length; i++) {
 
