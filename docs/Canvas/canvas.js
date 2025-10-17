@@ -73,7 +73,7 @@ window.addEventListener( "load", function() {
 
     registriereEventHandlerFuerForm( "kuchen"    , zeichneChartJsKuchendiagramm );
     registriereEventHandlerFuerForm( "balken"    , zeichneChartJsBalkendiagramm );
-    registriereEventHandlerFuerForm( "linien"    , zeichneChartJsLiniendiagramm  );
+    registriereEventHandlerFuerForm( "linien"    , zeichneChartJsLiniendiagramm );
 
     console.log( "Initialisierung abgeschlossen." );
 });
