@@ -4,7 +4,7 @@
 
 This repository contains several web pages built with the CSS framework
 [Bootstrap 5](https://getbootstrap.com/docs/5.3/) that demonstrate the
-usage of JavaScript in the browser.
+usage of JavaScript in a web browser.
 
 <br>
 
