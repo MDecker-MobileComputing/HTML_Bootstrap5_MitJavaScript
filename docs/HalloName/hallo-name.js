@@ -1,61 +1,61 @@
 
 "use strict";
 
-let inputVorname  = null;
-let inputNachname = null;
+let inputFirstName = null;
+let inputLastName  = null;
 
-let buttonBegruessen    = null;
-let buttonZuruecksetzen = null;
+let buttonGreet = null;
+let buttonReset = null;
 
 
 /**
- * Diese Funktion wird aufgerufen, wenn das Dokument inkl. aller
- * Ressourcen (z.B. Bilder oder Stylesheets) geladen wurde.
+ * This function is called when the document and all its resources
+ * (e.g. images or stylesheets) have finished loading.
  *
- * Es werden Referenzen auf die benötigten DOM-Elemente geholt und
- * die Event-Handler-Funktionen für die beiden Buttons registriert.
+ * References to the required DOM elements are retrieved and the
+ * event handler functions for both buttons are registered.
  */
 window.addEventListener( "load", function () {
 
-    // get reference to <input> with id=inputVorname
-    inputVorname  = document.getElementById( "inputVorname"  );
-    inputNachname = document.getElementById( "inputNachname" );
+    // Get references to the first-name and last-name inputs.
+    inputFirstName = document.getElementById( "inputVorname"  );
+    inputLastName  = document.getElementById( "inputNachname" );
 
-    buttonBegruessen    = document.getElementById( "buttonBegruessen"    );
-    buttonZuruecksetzen = document.getElementById( "buttonZuruecksetzen" );
+    buttonGreet = document.getElementById( "buttonBegruessen"    );
+    buttonReset = document.getElementById( "buttonZuruecksetzen" );
 
-    buttonBegruessen.addEventListener(    "click", onButtonBegruessen    );
-    buttonZuruecksetzen.addEventListener( "click", onButtonZuruecksetzen );
+    buttonGreet.addEventListener( "click", onButtonGreet );
+    buttonReset.addEventListener( "click", onButtonReset );
 
-    console.log( "Initialisierung abgeschlossen." );
+    console.log( "Initialization complete." );
 });
 
 
 /**
- * Event-Handler-Funktion für das Klicken auf den Button "Begrüße mich!".
+ * Event handler for clicking the "Greet me!" button.
  */
-function onButtonBegruessen() {
+function onButtonGreet() {
 
-    const vorname  = inputVorname.value.trim();
-    const nachname = inputNachname.value.trim();
+    const firstName = inputFirstName.value.trim();
+    const lastName  = inputLastName.value.trim();
 
-    if ( vorname === "" || nachname === "" ) {
+    if ( firstName === "" || lastName === "" ) {
 
-        alert( "Bitte beide Felder ausfüllen!" );
+        alert( "Please fill in both fields!" );
         return;
     }
 
-    let nameGesamt = vorname + " " + nachname;
+    let fullName = firstName + " " + lastName;
 
-    alert( "Hallo " + nameGesamt + "!" );
+    alert( "Hello " + fullName + "!" );
 }
 
 
 /**
- * Event-Handler-Funktion für das Klicken auf den Button "Zurücksetzen".
+ * Event handler for clicking the "Reset" button.
  */
-function onButtonZuruecksetzen() {
+function onButtonReset() {
 
-    inputVorname.value  = "";
-    inputNachname.value = "";
+    inputFirstName.value = "";
+    inputLastName.value  = "";
 }
