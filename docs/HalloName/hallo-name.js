@@ -15,7 +15,7 @@ let buttonZuruecksetzen = null;
  * Es werden Referenzen auf die benötigten DOM-Elemente geholt und
  * die Event-Handler-Funktionen für die beiden Buttons registriert.
  */
-window.addEventListener("load", function () {
+window.addEventListener( "load", function () {
 
     // get reference to <input> with id=inputVorname
     inputVorname  = document.getElementById( "inputVorname"  );
@@ -39,15 +39,15 @@ function onButtonBegruessen() {
     const vorname  = inputVorname.value.trim();
     const nachname = inputNachname.value.trim();
 
-    if (vorname === "" || nachname === "") {
+    if ( vorname === "" || nachname === "" ) {
 
-        alert("Bitte beide Felder ausfüllen!");
+        alert( "Bitte beide Felder ausfüllen!" );
         return;
     }
 
     let nameGesamt = vorname + " " + nachname;
 
-    alert("Hallo " + nameGesamt + "!");
+    alert( "Hallo " + nameGesamt + "!" );
 }
 
 
