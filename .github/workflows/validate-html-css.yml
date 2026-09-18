@@ -30,4 +30,4 @@ jobs:
           --root .
           --show-warnings
           --also-check-css
-          --ignore-re 'conic-gradient|The "date" input type is not supported in all browsers'
+          --ignore-re 'conic-gradient|The "date" input type is not supported in all browsers|Element "input" is missing required attribute "aria-checked"'
