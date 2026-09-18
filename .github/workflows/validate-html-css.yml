@@ -1,0 +1,33 @@
+name: Validate HTML & CSS
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  html-validation:
+    name: Check HTML and CSS syntax
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.x'
+
+      - name: Install HTML validator
+        run: python -m pip install --upgrade html5validator
+
+      - name: Validate all HTML + CSS files
+        run: >-
+          html5validator
+          --root .
+          --show-warnings
+          --also-check-css
+          --ignore-re 'conic-gradient|The "date" input type is not supported in all browsers'
