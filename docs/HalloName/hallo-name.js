@@ -27,6 +27,9 @@ window.addEventListener( "load", function () {
     buttonGreet.addEventListener( "click", onButtonGreet );
     buttonReset.addEventListener( "click", onButtonReset );
 
+    inputFirstName.addEventListener( "keydown", greetOnEnter );
+    inputLastName.addEventListener(  "keydown", greetOnEnter );
+
     console.log( "Initialization complete." );
 });
 
@@ -48,6 +51,19 @@ function onButtonGreet() {
     let fullName = firstName + " " + lastName;
 
     alert( "Hello " + fullName + "!" );
+}
+
+
+/**
+ * Event handler for pressing a key in either name input.
+ */
+function greetOnEnter( event ) {
+
+    if ( event.key === "Enter" ) {
+
+        event.preventDefault();
+        buttonGreet.click();
+    }
 }
 
 
