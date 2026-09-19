@@ -18,11 +18,11 @@ let buttonReset = null;
 window.addEventListener( "load", function () {
 
     // Get references to the first-name and last-name inputs.
-    inputFirstName = document.getElementById( "inputVorname"  );
-    inputLastName  = document.getElementById( "inputNachname" );
+    inputFirstName = document.getElementById( "inputFirstName" );
+    inputLastName  = document.getElementById( "inputLastName" );
 
-    buttonGreet = document.getElementById( "buttonBegruessen"    );
-    buttonReset = document.getElementById( "buttonZuruecksetzen" );
+    buttonGreet = document.getElementById( "buttonGreet" );
+    buttonReset = document.getElementById( "buttonReset" );
 
     buttonGreet.addEventListener( "click", onButtonGreet );
     buttonReset.addEventListener( "click", onButtonReset );
