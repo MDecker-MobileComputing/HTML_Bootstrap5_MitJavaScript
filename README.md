@@ -9,7 +9,7 @@ usage of JavaScript in a web browser.
 <br>
 
 Served via *GitHub Pages*:
-https://mdecker-mobilecomputing.github.io/HTML_Bootstrap5_MitJavaScript/
+https://mdecker-mobilecomputing.github.io/HTML_Bootstrap5_WithJavaScript/
 
 <br>
 
